@@ -28,8 +28,9 @@ public class VacationPlanControllerTest {
         params.put("days", "10");
         params.put("weather", "clear");
 
-        Map<String, String> response = vacationPlanController.vacationPlan(params);
+        String response = vacationPlanController.vacationPlan(params);
 
-        assertEquals(params, response);
+        assertEquals("455821", response);
     }
+
 }
