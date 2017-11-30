@@ -1,7 +1,6 @@
 package com.thoughtworks.vacationplanner;
 
 import org.junit.Test;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ public class VacationPlanControllerTest {
 
         String response = vacationPlanController.vacationPlan(params);
 
-        assertEquals("http://localhost:8882/cities/455821/year/2017", response);
+        assertEquals("thunderstorms", response);
     }
 
 }

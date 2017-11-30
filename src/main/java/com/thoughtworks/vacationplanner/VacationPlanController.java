@@ -5,8 +5,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 @RestController
 public class VacationPlanController {
@@ -16,7 +14,8 @@ public class VacationPlanController {
     @RequestMapping("/vacation-plan")
     public String vacationPlan(@RequestParam Map<String, String> queryParameters) {
         String cityId = getCityIdFromName(queryParameters.get("city"));
-        return "http://localhost:8882/cities/" + cityId + "/year/2017";
+
+        return requestCityWeathers(cityId)[0].getWeather();
     }
 
     private String getCityIdFromName(String city) {
@@ -29,5 +28,9 @@ public class VacationPlanController {
 
     private City[] requestCities() {
         return restTemplate.getForObject("http://localhost:8882/cities/", City[].class);
+    }
+
+    private Weather[] requestCityWeathers(String cityId) {
+        return restTemplate.getForObject(String.format("http://localhost:8882/cities/%s/year/2017", cityId), Weather[].class);
     }
 }
