@@ -1,8 +1,15 @@
 package com.thoughtworks.vacationplanner;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PlannerService {
 
     public String getIntervals(String days, String weather, Weather[] weathers) {
-        return String.format("from %s to %s", weathers[0].getDate(), weathers[1].getDate());
+        List<Weather> filteredWeathers = Arrays.stream(weathers)
+                .filter(w -> w.getWeather().equals(weather))
+                .collect(Collectors.toList());
+        return String.format("from %s to %s", filteredWeathers.get(0).getDate(), filteredWeathers.get(1).getDate());
     }
 }
