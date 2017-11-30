@@ -9,16 +9,6 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 public class VacationPlanControllerTest {
-
-    @Test
-    public void hello() throws Exception {
-        VacationPlanController vacationPlanControllerTest = new VacationPlanController();
-
-        String hello = vacationPlanControllerTest.hello();
-
-        assertEquals("Porto Alegre", hello);
-    }
-
     @Test
     public void retrievesQueryParameter() throws Exception {
         VacationPlanController vacationPlanController = new VacationPlanController();
@@ -30,7 +20,7 @@ public class VacationPlanControllerTest {
 
         String response = vacationPlanController.vacationPlan(params);
 
-        assertEquals("455821", response);
+        assertEquals("http://localhost:8882/cities/455821/year/2017", response);
     }
 
 }
