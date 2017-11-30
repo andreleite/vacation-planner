@@ -10,6 +10,6 @@ public class PlannerService {
         List<Weather> filteredWeathers = Arrays.stream(weathers)
                 .filter(w -> w.getWeather().equals(weather))
                 .collect(Collectors.toList());
-        return String.format("from %s to %s", filteredWeathers.get(0).getDate(), filteredWeathers.get(1).getDate());
+        return String.format("from %s to %s", filteredWeathers.get(0).getDate(), filteredWeathers.get(filteredWeathers.size() - 1).getDate());
     }
 }
